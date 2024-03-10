@@ -1,29 +1,42 @@
-import React from 'react';
+import {
+  ProfileWrap,
+  Description,
+  Avatar,
+  Name,
+  Tag,
+  Location,
+  Stats,
+  ListItem,
+  Label,
+  Quantity,
+} from './Profile.styled';
 
-export const Profile = ({ avatar, username, tag, location, stats }) => {
+const Profile = ({ username, tag, location, avatar, stats }) => {
   return (
-    <div className="profile">
-      <div className="description">
-        <img src={avatar} alt="User avatar" className="avatar" />
-        <p className="name">{username}</p>
-        <p className="tag">@{tag}</p>
-        <p className="location">{location}</p>
-      </div>
+    <ProfileWrap>
+      <Description>
+        <Avatar src={avatar} alt={username} />
+        <Name>{username}</Name>
+        <Tag>@{tag}</Tag>
+        <Location>{location}</Location>
+      </Description>
 
-      <ul className="stats">
-        <li>
-          <span className="label">Followers</span>
-          <span className="quantity">{stats.followers}</span>
-        </li>
-        <li>
-          <span className="label">Views</span>
-          <span className="quantity">{stats.views}</span>
-        </li>
-        <li>
-          <span className="label">Likes</span>
-          <span className="quantity">{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <Stats>
+        <ListItem>
+          <Label>Followers</Label>
+          <Quantity>{stats.followers}</Quantity>
+        </ListItem>
+        <ListItem>
+          <Label>Views</Label>
+          <Quantity>{stats.views}</Quantity>
+        </ListItem>
+        <ListItem>
+          <Label>Likes</Label>
+          <Quantity>{stats.likes}</Quantity>
+        </ListItem>
+      </Stats>
+    </ProfileWrap>
   );
 };
+
+export default Profile;

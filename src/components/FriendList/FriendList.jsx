@@ -1,18 +1,17 @@
-import React from 'react';
+import FriendListItem from './FriendListItem';
+import { List } from './Friendlist.styled';
 
-import { FriendItem } from '../FriendItem';
+const FriendList = ({ friends }) => (
+  <List>
+    {friends.map(({ avatar, name, isOnline, id }) => (
+      <FriendListItem
+        key={id}
+        avatar={avatar}
+        name={name}
+        isOnline={isOnline}
+      />
+    ))}
+  </List>
+);
 
-export const FriendList = ({ friends }) => {
-  return (
-    <ul className="friend-list">
-      {friends.map(friend => (
-        <FriendItem
-          key={friend.id}
-          avatar={friend.avatar}
-          name={friend.name}
-          isOnline={friend.isOnline}
-        />
-      ))}
-    </ul>
-  );
-};
+export default FriendList;

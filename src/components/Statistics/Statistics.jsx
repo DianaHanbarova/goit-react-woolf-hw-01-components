@@ -1,19 +1,30 @@
-import React from 'react';
+import { getRandomHexColor } from './getRandomHexColor';
+import {
+  StatisticsSection,
+  Title,
+  StatList,
+  StatItem,
+  Label,
+  Percentage,
+} from './Statistics.styled';
 
-import { StatisticItem } from './StatisticItem';
-
-export const Statistics = ({ title, stats }) => {
-  if (!title) return null;
-
+const Statistics = ({ stats, title }) => {
   return (
-    <section className="statistics">
-      <h2 className="title">{title}</h2>
-
-      <ul className="stat-list">
-        {stats.map(({ id, label, percentage }) => (
-          <StatisticItem key={id} label={label} percentage={percentage} />
+    <StatisticsSection>
+      {title && <Title>{title}</Title>}
+      <StatList>
+        {stats.map(stat => (
+          <StatItem
+            key={stat.id}
+            style={{ backgroundColor: getRandomHexColor() }}
+          >
+            <Label>{stat.label}</Label>
+            <Percentage>{stat.percentage}%</Percentage>
+          </StatItem>
         ))}
-      </ul>
-    </section>
+      </StatList>
+    </StatisticsSection>
   );
 };
+
+export default Statistics;
