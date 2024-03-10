@@ -13,5 +13,4 @@ const FriendList = ({ friends }) => (
     ))}
   </List>
 );
-
 export default FriendList;
